@@ -10,6 +10,8 @@
 
 * This application requires high GPU usage, if you do not have a good GPU, read my article titled Deploying flask project over Colab which I wrote earlier. https://github.com/AhmetFurkanDEMIR/Unix-and-Cloud-Computing/blob/master/GogleColab_Flask/README.md
 
+* Usage video of the application : https://www.linkedin.com/posts/1dfurkan_neuralstyletransfer-computervision-machinelearning-activity-6717726740375969792-RkTN
+
 ### Use of the application
 
 * First, go to the folder named models and run the code. (Since the size of the model (500 mb) is very large, you will download the model remotely with this code.)
