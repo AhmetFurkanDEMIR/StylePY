@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+	<h3>Transfer style to Video</h3>
+	<hr>
+
+	<body>
+
+		<div class="container" style="min-height:100% width:80%">
+		{% with messages = get_flashed_messages() %}
+		  {% if messages %}
+		    {% for message in messages %}
+			  <div class="alert alert-warning alert-dismissible" role="alert">
+			  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+				{{message}}
+			  </div>
+			{% endfor %}
+		  {% endif %}
+		{% endwith %}
+		
+		{% block asd %}{% endblock %}
+		</div>
+
+		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+	</body>
+
+	<div align="center"><img src="{{ url_for('static', filename = 'images/aa0.gif') }}" ></div>
+
+	<pre>&nbsp;</pre>
+	<pre>&nbsp;</pre>
+
+	<form method="POST" action="/VideoStyle" enctype="multipart/form-data">
+
+		<div align="center">
+
+		    <font face="tahoma" size="5" color="blue">
+		    <b>Content Video :   </b></font>
+
+
+			<input type = "file" name = "file1" value = "content_file" class="">
+
+
+			<font face="tahoma" size="5" color="blue">
+			<b>Style Image :   </b></font>
+
+			<input type = "file" name = "file" value = "stil_file" class="">
+		</div>
+
+		<pre>&nbsp;</pre>
+		<pre>&nbsp;</pre>
+
+		<div class = "text-center">
+			
+			<font face="tahoma" size="5" color="blue">
+			<b>Image size : </b></font>
+
+
+
+			<label for="width">Height : </label>
+		  	<input type="text" id="height" name="height" maxlength="4" size="4">
+		  	<label for="width">, Width :   </label>
+		  	<input type="text" id="width" name="width" maxlength="4" size="4">
+
+			<pre>&nbsp;</pre>
+			<pre>&nbsp;</pre>
+
+			<font face="tahoma" size="5" color="blue">
+			<b>Preserve color :   </b></font>
+
+
+		  	<input type="radio" id="True" name="gender" value="True">
+		  	<label for="True">True</label>
+		  	<input type="radio" id="False" name="gender" value="False">
+		  	<label for="False">False</label>
+
+		</div>
+
+		<pre>&nbsp;</pre>
+		<pre>&nbsp;</pre>
+
+		<!doctype html>
+		<div align="center">
+			<button type="submit" class="btn btn-primary">Transfer style</button>
+
+		</div>
+	</form>
+
+	<pre>&nbsp;</pre>
+	<pre>&nbsp;</pre>
+
+{% endblock body %}

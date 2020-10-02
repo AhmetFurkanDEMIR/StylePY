@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class = "text-center">
+    <p><font face="tahoma" size="5" color="maroon">
+    <b>Neural Style Transfer</b></font></p>
+</div>
+
+
+<pre>&nbsp;</pre>
+<pre>&nbsp;</pre>
+
+<a href="/ImageStyle">
+<div class = "text-center">
+    <p><font face="tahoma" size="3" color="black">
+    <b>Style to image</b></font></p>
+</div>
+</a>
+
+<a href="/ImageStyle"><div align="center"><img src="{{ url_for('static', filename = 'images/image1.jpg') }}" ></div></a>
+
+<pre>&nbsp;</pre>
+<pre>&nbsp;</pre>
+
+<a href="/VideoStyle">
+<div class = "text-center">
+    <p><font face="tahoma" size="3" color="black">
+    <b>Style to video</b></font></p>
+</div>
+</a>
+
+<a href="/VideoStyle">
+	<div align="center"><img src="{{ url_for('static', filename = 'images/gif1.gif') }}" ></div>
+</a>
+
+<pre>&nbsp;</pre>
+<pre>&nbsp;</pre>
+
+
+{% endblock body %}

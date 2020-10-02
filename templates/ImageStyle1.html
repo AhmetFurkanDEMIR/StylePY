@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+	{% if asd%2 != 0 %}
+
+		<meta http-equiv="refresh" content="0;URL=/result">
+
+	{% endif %}
+
+
+	<h3>Created picture</h3>
+	<hr>
+
+	<pre>&nbsp;</pre>
+	<pre>&nbsp;</pre>
+
+	<div align="center"><img src="{{ url_for('static', filename = "output/out1.png") }}" ></div>
+
+	<pre>&nbsp;</pre>
+	<pre>&nbsp;</pre>
+
+	<div align="center">
+		<a href="/">
+		<button type="submit" class="btn btn-primary">Return to main menu</button>
+		</a>
+
+		<a href="/ImageStyle">
+		<button type="submit" class="btn btn-primary">New style transfer</button>
+		</a>
+
+	</div>
+
+	<pre>&nbsp;</pre>
+	<pre>&nbsp;</pre>
+
+{% endblock body %}

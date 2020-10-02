@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+{% if asd0 % 2 != 0 %}
+
+	<meta http-equiv="refresh" content="0;URL=/result0">
+
+{% endif %}
+
+
+<h3>Created video</h3>
+<hr>
+
+<pre>&nbsp;</pre>
+
+<div align="center">
+	<video width="620" height="540" controls>
+		<source src={{ url_for('static', filename="output/output.mp4") }} type="video/mp4">
+	</video>
+</div>
+
+<pre>&nbsp;</pre>
+<pre>&nbsp;</pre>
+
+<div align="center">
+	<a href="/">
+		<button type="submit" class="btn btn-primary">Return to main menu</button>
+	</a>
+
+	<a href="/VideoStyle">
+		<button type="submit" class="btn btn-primary">New style transfer</button>
+	</a>
+
+</div>
+
+<pre>&nbsp;</pre>
+<pre>&nbsp;</pre>
+
+{% endblock body %}

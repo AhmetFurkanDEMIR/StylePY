@@ -1,0 +1,10 @@
+pytorch
+torch
+torchvision
+flask
+flask_ngrok
+numpy
+opencv-python
+matplotlib
+pandas
+pillow

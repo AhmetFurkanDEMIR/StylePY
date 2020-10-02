@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        var refresh_id = setInterval(function() {
+            $.get(
+              "{{ url_for('thread_status') }}",
+              function(data) {
+                console.log(data);
+                if (data.status == 'finished') {
+                  window.location.replace("{{ url_for('result') }}");
+                }
+              }
+            )}
+          , 1000);
+      });
+    </script>
+  </head>
+  <body>
+    <p>
+      {% block body %}
+
+        <h3>Style is being conveyed...</h3>
+        <hr>
+
+        <pre>&nbsp;</pre>
+        <pre>&nbsp;</pre>
+
+        </a>
+        <div align="center"><img src="{{ url_for('static', filename = 'images/asd0.gif') }}" ></div>
+        </a>
+
+      {% endblock body %}
+    
+    </p>
+  </body>
+</html>
