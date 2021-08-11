@@ -51,7 +51,7 @@ def asd():
 
 			CONTENT_PATH = path + "/"+ i
 
-		else:
+		elif a[0] == "stil":
 
 			STYLE_PATH = path + "/"+ i
 
