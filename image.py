@@ -5,11 +5,11 @@ import torch.optim as optim
 import os
 import copy
 import numpy as np
-import matplotlib.pyplot as plt
 from torchvision import models, transforms
-
 import cv2
-import copy
+
+global path
+path_dir = os.getcwd()
 
 def asd():
 
@@ -22,14 +22,16 @@ def asd():
 	CONTENT_WEIGHT = 5e0
 	STYLE_WEIGHT = 1e2
 	TV_WEIGHT = 1e-3
-	NUM_ITER = 600
-	SHOW_ITER = 150
+	NUM_ITER = 700
+	SHOW_ITER = 250
 
-	file = open("../a/booll/asd.txt","r+")
+	a = "{}/booll/asd.txt".format(path_dir)
+	file = open(a,"r+")
 
 	booll = file.read()
 
-	filea = open("../a/booll/asdd.txt", "r+")
+	b = "{}/booll/asdd.txt".format(path_dir)
+	filea = open(b, "r+")
 	add = filea.read().split(",")
 	wig = int(add[0])
 	hig = int(add[1])
@@ -39,7 +41,7 @@ def asd():
 	PRESERVE_COLOR = str(booll) # 'False'
 	PIXEL_CLIP = 'True' # or False - Clipping produces better images
 
-	path = "../a/static/uploads"
+	path = "{}/static/uploads".format(path_dir)
 
 	for i in os.listdir(path):
 
@@ -59,7 +61,7 @@ def asd():
 	VGG 19: https://web.eecs.umich.edu/~justincj/models/vgg19-d01eb7cb.pth
 	VGG 16: https://web.eecs.umich.edu/~justincj/models/vgg16-00b39a1b.pth
 	"""
-	VGG19_PATH = '../a/models/vgg19-d01eb7cb.pth'
+	VGG19_PATH = '{}/models/vgg19-d01eb7cb.pth'.format(path_dir)
 	POOL = 'max'
 
 	# Print the device
@@ -76,7 +78,7 @@ def asd():
 	# Show image
 	def show(img):
 	    # Convert from BGR to RGB
-	    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+	    img = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 	    
 	    # imshow() only accepts float [0,1] or int [0,255]
 	    img = np.array(img/255).clip(0,1)
@@ -86,7 +88,7 @@ def asd():
 	def saveimg(img, iters):
 	    if (PIXEL_CLIP=='True'):
 	        img = img.clip(0, 255)
-	    cv2.imwrite("../a/static/output/out"+str(iters)+".png", img)
+	    cv2.imwrite("{}/static/output/out".format(path_dir)+str(iters)+".png", img)
 	    
 	# Color transfer
 	def transfer_color(src, dest):
@@ -330,3 +332,4 @@ def asd():
 		show(ttoi(g.clone().detach()))
 		show(content_img)
 		saveimg(ttoi(g.clone().detach()), 1)
+
