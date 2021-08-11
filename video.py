@@ -3,13 +3,13 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import os
-import copy
-import numpy as np
-import matplotlib.pyplot as plt
 from torchvision import models, transforms
 import imageio
 import cv2
 import copy
+
+global path
+path_dir = os.getcwd()
 
 def fb():
 
@@ -20,13 +20,13 @@ def fb():
 	STYLE_WEIGHT = 1e2
 	TV_WEIGHT = 1e-3
 	NUM_ITER = 500
-	SHOW_ITER = 100
+	SHOW_ITER = 150
 
-	file = open("../a/booll/asd.txt","r+")
+	file = open("{}/booll/asd.txt".format(path_dir),"r+")
 
 	booll = file.read()
 
-	filea = open("../a/booll/asdd.txt", "r+")
+	filea = open("{}/booll/asdd.txt".format(path_dir), "r+")
 	add = filea.read().split(",")
 	wig = int(add[0])
 	hig = int(add[1])
@@ -36,7 +36,7 @@ def fb():
 	PRESERVE_COLOR = str(booll) # 'False'
 	PIXEL_CLIP = 'True' # or False - Clipping produces better images
 
-	path = "../a/static/uploads/"
+	path = "{}/static/uploads/".format(path_dir)
 
 	for i in os.listdir(path):
 
@@ -56,7 +56,7 @@ def fb():
 	VGG 19: https://web.eecs.umich.edu/~justincj/models/vgg19-d01eb7cb.pth
 	VGG 16: https://web.eecs.umich.edu/~justincj/models/vgg16-00b39a1b.pth
 	"""
-	VGG19_PATH = '../a/models/vgg19-d01eb7cb.pth'
+	VGG19_PATH = '{}/models/vgg19-d01eb7cb.pth'.format(path_dir)
 	POOL = 'max'
 
 	# Print the device
@@ -319,7 +319,7 @@ def asdd():
 
 	fps = reader.get_meta_data()['fps']
 
-	writer = imageio.get_writer("../a/static/output/output.mp4", fps=fps)
+	writer = imageio.get_writer("{}/static/output/output.mp4".format(path_dir), fps=fps)
 
 	for i, frame in enumerate(reader):
 	    
