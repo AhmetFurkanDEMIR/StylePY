@@ -1,37 +1,68 @@
-from flask import render_template, Flask, flash, redirect, session, request, render_template, send_from_directory, jsonify
+# Flask
+# Bir şablonu oluşturmak için render_template() yöntemini kullanabilirsiniz
+# Flask uygulamasını olusturup ayaga kaldırmak icin Flask(__name__) yöntemini kullanabilirsiniz
+# Koddaki duruma gore on yuzde (HTML) hata veya uyari mesajları vermek icin flash methodunu kullanabilirsiniz
+# istekleri kontrol etmek icin request methodu kullanılır
+# jsonify; Bir application/json mimetype ile verilen bağımsız değişkenlerin JSON temsiliyle bir Yanıt oluşturur. Bu işlevin argümanları, dict yapıcısıyla aynıdır.
+from flask import render_template, Flask, flash, request, jsonify
+
+# path, isletim sistemi vb. icin
 import os
+
+# secilen bir dosyanin guvenli bir surumunu geri donderir
 from werkzeug.utils import secure_filename
+
+# farklı thredlerde farklı işler yaparak kodda dallanma sağlamak
 from threading import Thread
-import sys
+
+# süre
 import time
+
+# resim sitili icin yazdigim fonskiyon
 import image as im
+
+# video sitili icin yazdigim fonskiyon
 import video as vid
-import time
+
+# video ve image stayle kisminda islem bittimi kontrolu icin refresh yapar
 global asd
 global asd0
 
 asd = 0
 asd0 = 0
 
+# calisma alani dosyalari bu alana tasiyip bu alandan ceker
+global path
+path = os.getcwd()
+
+# style isleminin Flask dan bagimsiz calismasini sağlamak
 th = Thread()
 finished = False
 finished0 = False
 
+# dosyalar
 global content_file
 global stil_file
 
 app = Flask(__name__)
 
+# upload turleri
 app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png', '.gif']
+
+# upload yolu
 app.config['UPLOAD_PATH'] = 'static/uploads'
+
+# Şifreleme gerektiren herhangi bir şey (saldırganların kurcalamasına karşı güvenlik sağlamak için), gizli anahtarın ayarlanmasını gerektirir.
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
+# image style 'in koddan bagimsiz calismasini saglayan fonsiyon
 def dataa():
 
     global finished
     im.asd()
     finished = True
 
+# Video style 'in koddan bagimsiz calismasini saglayan fonsiyon
 def data():
 
     global finished0
@@ -53,6 +84,8 @@ def VideoStyle():
 
     sz = {"a":False, "b":False, "c":False, "d":False}
 
+    # GET : sunucudan veri istemek için.
+    # POST : işlenecek verileri sunucuya göndermek için.
     
     if request.method == "POST":
 
@@ -76,7 +109,7 @@ def VideoStyle():
             
             true = request.form['gender']
 
-            file = open("../a/booll/asd.txt","w+")
+            file = open("{}/booll/asd.txt".format(path),"w+")
 
             file.write(true)
             file.close()
@@ -96,7 +129,7 @@ def VideoStyle():
                 sz["c"] = True
                 pass
 
-            filea = open("../a/booll/asdd.txt", "w+")
+            filea = open("{}/booll/asdd.txt".format(path), "w+")
             filea.write(height +","+ width)
             filea.close()
 
@@ -178,7 +211,7 @@ def ImageStyle():
             
             true = request.form['gender']
 
-            file = open("../a/booll/asd.tx","w+")
+            file = open("{}/booll/asd.txt".format(path),"w+")
 
             file.write(true)
             file.close()
@@ -198,7 +231,7 @@ def ImageStyle():
                 sz["c"] = True
                 pass
 
-            filea = open("../a/booll/asdd.txt", "w+")
+            filea = open("{}/booll/asdd.txt".format(path), "w+")
             filea.write(height +","+ width)
             filea.close()
 
@@ -284,4 +317,4 @@ def me():
 
 if __name__ == "__main__":
 
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=443, ssl_context=('cert.pem', 'key.pem'))
